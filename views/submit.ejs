@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Comment</title>
+</head>
+<body>
+    <%- include ('partials/navbar.ejs') %>
+    <div class="alert alert-success">
+    <h2>Thank you for your comment!</h2>
+    <p>Dear <%= title %> <%= name %>,</p>
+    <p> 
+        We have receive your comment and will response to it by 
+        sending you an email to <%= email %> and SMS to <%= contact %> within 5 working days.
+    </p>
+    <p>The following is the comment from you: </p> 
+    <p><%= comments %></p>  
+    </div>
+</body>
+</html>
