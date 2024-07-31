@@ -6,10 +6,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database:'c237_busticketapp'
+   // host: 'localhost',
+   // user: 'root',
+   // password: '',
+   // database:'c237_busticketapp'
+   host: 'sql.freedb.tech',
+   user: 'freedb_YongKeong',
+   password: '$W?8DXw@$nMYzWK',
+   database: 'freedb_c237_busticketapp'
 });
 
 connection.connect((err) => {
