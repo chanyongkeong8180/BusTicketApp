@@ -25,7 +25,7 @@ connection.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -210,7 +210,7 @@ app.get('/ticket/:id/delete', (req, res) => {
     });
 });
 
-app.listen(port, () =>
+app.listen(PORT, () =>
 {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${PORT}`);
 });
