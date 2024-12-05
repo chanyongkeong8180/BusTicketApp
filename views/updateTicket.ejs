@@ -41,7 +41,7 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="date">Date:</label>
-                <input type="date" class="form-control" id="date" value = "<%= ticket.date %>" name="date" required>
+                <input type="date" class="form-control" id="date" value = "<%= new Date(ticket.date).toLocaleDateString('en-CA') %>" name="date" required>
             </div>
             <div class="mb-3 mt-3">
                 <label for="time">Time:</label>
