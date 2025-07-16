@@ -6,10 +6,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
-   // host: 'localhost',
-   // user: 'root',
-   // password: '',
-   // database:'c237_busticketapp'
    host: 'db4free.net',
    user: 'busticketapp',
    password: 'busticketapp',
