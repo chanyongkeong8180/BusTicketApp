@@ -10,10 +10,6 @@ const connection = mysql.createConnection({
    user: 'busticketapp',
    password: 'busticketapp',
    database: 'busticketapp',
-   connectTimeout: 10000,
-   reconnect: true,
-   waitForConnections: true,
-   connectionLimit: 10,
 });
 
 connection.connect((err) => {
