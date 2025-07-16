@@ -13,17 +13,20 @@ const connection = mysql.createConnection({
    host: 'db4free.net',
    user: 'busticketapp',
    password: 'busticketapp',
-   database: 'busticketapp'
+   database: 'busticketapp',
+   connectTimeout: 10000, // 10 seconds
 });
 
-connection.connect((err) => {
+setTimeout(() => {
+    connection.connect((err) => {
     if (err)
     {
         console.error('Error connecting to MySQL:', err)
         return;
     }
     console.log('Connected to MySQL database');
-});
+    });
+}, 5000); // Wait for 5 seconds before connecting
 
 const PORT = process.env.PORT || 3000;
 
