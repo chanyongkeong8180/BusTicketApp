@@ -5,21 +5,48 @@ const { name } = require('ejs');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const connection = mysql.createConnection({
-   host: 'db4free.net',
-   user: 'busticketapp',
-   password: 'busticketapp',
-   database: 'busticketapp',
-});
+let connection;
 
-connection.connect((err) => {
-    if (err)
-    {
-        console.error('Error connecting to MySQL:', err)
-        return;
+function handleDisconnect() {
+    connection = mysql.createConnection({
+    host: 'db4free.net',
+    user: 'busticketapp',
+    password: 'busticketapp',
+    database: 'busticketapp',
+    });
+
+    connection.connect((err) => {
+        if (err)
+        {
+            console.error('Error connecting to MySQL:', err)
+            return;
+        }
+        console.log('Connected to MySQL database');
+    });
+
+    connection.on('error', (err) => {
+        console.error('MySQL connection error:', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        }
+        throw err;
+    });
+}
+
+handleDisconnect();
+
+setInterval(() => {
+    if (connection) {
+        connection.ping((err) => {
+            if (err) {
+                console.error('Error pinging MySQL:', err);
+                handleDisconnect();
+            } else {
+                console.log('MySQL connection is alive');
+            }
+        });
     }
-    console.log('Connected to MySQL database');
-});
+}, 10000);
 
 const PORT = process.env.PORT || 3000;
 
